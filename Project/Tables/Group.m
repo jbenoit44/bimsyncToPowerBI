@@ -39,6 +39,7 @@ in
 //The request to retrieve a page of groups
 token = GetToken(),
 revisionsList = LastRevisions(AllRevisions(projectId ,token )),
+// clqzesjvdhbmiufQJH<
 Entities    = List.Combine(List.Transform(revisionsList, each RESTFunction("/v2/projects/" & projectId & "/ifc/groups", _[id],token))),
 Table       = Table.FromList(Entities, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
 Fields      = Record.FieldNames(Entities{0}),
